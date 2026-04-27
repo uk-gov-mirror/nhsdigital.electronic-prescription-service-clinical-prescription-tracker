@@ -134,7 +134,11 @@ paths:
           name: prescriptionId
           schema:
             type: string
-          description: The Prescription ID to search prescriptions for. Please ensure to url encode this value, as + is a valid prescription ID checksum character but is a reserved character in query parameters, otherwise it will be interpreted as a space and will result in an invalid checksum error.
+          description: The Prescription ID to search prescriptions for. Please ensure to
+            url encode this value, as + is a valid prescription ID checksum
+            character but is a reserved character in query parameters, otherwise
+            it will be interpreted as a space and will result in an invalid
+            checksum error.
         - in: query
           name: nhsNumber
           schema:
@@ -300,7 +304,8 @@ components:
         Required in all environments except sandbox.
       schema:
         type: string
-        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA\
+          -F]{12}$"
         example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
     CorrelationID:
       in: header
@@ -316,6 +321,7 @@ components:
 x-nhsd-apim:
   temporary: false
   monitoring: true
+  IDAssuranceLevel: 3
   access:
     - title: User Restricted
       grants:
