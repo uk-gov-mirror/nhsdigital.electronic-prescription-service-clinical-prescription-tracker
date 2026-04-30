@@ -159,8 +159,7 @@ paths:
 
             | HTTP status | Error code          | Description                                                                                                                               |
             | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `value`             | The server was unable to process the request.                                                                                             |
-            | 404         | `not-found`         | The server was unable to find the specified resource.                                                                                     |
+            | 400         | `value`             | The server was unable to process the request.                                                                                             |                                                                              |
             | 408         | `timeout`           | The server has timed out whilst processing the request.                                                                                   |
 
             Any errors will be included in the returned OperationOutcome (below).
