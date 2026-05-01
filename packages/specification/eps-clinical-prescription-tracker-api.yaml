@@ -321,7 +321,7 @@ components:
 x-nhsd-apim:
   temporary: false
   monitoring: true
-  IDAssuranceLevel: 3
+  idassurancecheck: 3
   access:
     - title: User Restricted
       grants:
