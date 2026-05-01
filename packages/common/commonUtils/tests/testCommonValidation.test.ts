@@ -387,6 +387,26 @@ describe("Test validatePrescriptionId", () => {
     const actualErrors = validatePrescriptionId(mockPrescriptionId, logger)
     expect(actualErrors).toEqual(expectedErrors)
   })
+
+  it("logs errors when called with a logger", () => {
+    const mockPrescriptionId = "CBEF44-000X26-41E1B1"
+    const mockLogger: Partial<Logger> = {
+      error: jest.fn()
+    }
+    validatePrescriptionId(mockPrescriptionId, mockLogger as Logger)
+
+    expect(mockLogger.error).toHaveBeenCalled()
+  })
+
+  it("does not log errors when called without a logger", () => {
+    const mockPrescriptionId = "CBEF44-000X26-41E1B1"
+    const mockLogger: Partial<Logger> = {
+      error: jest.fn()
+    }
+    validatePrescriptionId(mockPrescriptionId)
+
+    expect(mockLogger.error).not.toHaveBeenCalled()
+  })
 })
 
 describe("Test validateNhsNumber", () => {

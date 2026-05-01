@@ -73,12 +73,14 @@ const PRESCRIPTION_ID_PATTERN = /^[A-F0-9]{6}-[A-Z0-9]{6}-[A-F0-9]{5}[A-Z0-9+]{1
 const PRESCRIPTION_ID_WITHOUT_CHECKSUM_LENGTH = 17 as const
 const CHECKSUM_CHARACTERS = [..."0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+"] as const
 
-export const validatePrescriptionId = (prescriptionId: string, logger: Logger): Array<ServiceError> => {
+export const validatePrescriptionId = (
+  prescriptionId: string, logger: Logger | undefined = undefined): Array<ServiceError> => {
   const errors: Array<ServiceError> = []
 
   const validFormat = PRESCRIPTION_ID_PATTERN.test(prescriptionId)
   if (!validFormat) {
-    logger.error("prescriptionId does not match required format.", {prescriptionId})
+    //should not be logging errors when used to filter R1's
+    if (logger) logger.error("prescriptionId does not match required format.", {prescriptionId})
     errors.push({
       status: 400,
       severity: "error",
@@ -99,7 +101,8 @@ export const validatePrescriptionId = (prescriptionId: string, logger: Logger): 
   const calculatedChecksumChar = CHECKSUM_CHARACTERS[calculatedChecksumValue]
 
   if (!calculatedChecksumChar || !checksum || calculatedChecksumChar !== checksum){
-    logger.error("Invalid prescriptionId checksum.", {
+    //should not be logging errors when used to filter R1's
+    if (logger) logger.error("Invalid prescriptionId checksum.", {
       prescriptionId,
       checksum: `${checksum}`, // logger does not include the key/value in the log if directly passed an undefined value
       calculatedChecksumChar: `${calculatedChecksumChar}`
