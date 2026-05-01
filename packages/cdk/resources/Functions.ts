@@ -24,19 +24,19 @@ export class Functions extends Construct {
 
     // Imports
     const lambdaAccessSecretsPolicy = ManagedPolicy.fromManagedPolicyArn(
-      this, "lambdaAccessSecretsPolicy", Fn.importValue("account-resources:LambdaAccessSecretsPolicy"))
+      this, "lambdaAccessSecretsPolicy", Fn.importValue("secrets-cdk:IAM:LambdaAccessSecretsPolicy:Arn"))
 
     const lambdaDecryptSecretsKMSPolicy = ManagedPolicy.fromManagedPolicyArn(
-      this, "lambdaDecryptSecretsKMSPolicy", Fn.importValue("account-resources:LambdaDecryptSecretsKMSPolicy"))
+      this, "lambdaDecryptSecretsKMSPolicy", Fn.importValue("secrets-cdk:IAM:LambdaDecryptSecretsKMSPolicy:Arn"))
 
     const lambdaDefaultEnvironmentVariables: {[key: string]: string} = {
       NODE_OPTIONS: "--enable-source-maps",
       TargetSpineServer: props.targetSpineServer,
-      SpinePrivateKeyARN: Fn.importValue("account-resources:SpinePrivateKey"),
-      SpinePublicCertificateARN: Fn.importValue("account-resources:SpinePublicCertificate"),
-      SpineASIDARN: Fn.importValue("account-resources:SpineASID"),
-      SpinePartyKeyARN: Fn.importValue("account-resources:SpinePartyKey"),
-      SpineCAChainARN: Fn.importValue("account-resources:SpineCAChain"),
+      SpinePrivateKeyARN: Fn.importValue("secrets-cdk:Secrets:SpinePrivateKey:Arn"),
+      SpinePublicCertificateARN: Fn.importValue("secrets-cdk:Secrets:SpinePublicCertificate:Arn"),
+      SpineASIDARN: Fn.importValue("secrets-cdk:Secrets:SpineASID:Arn"),
+      SpinePartyKeyARN: Fn.importValue("secrets-cdk:Secrets:SpinePartyKey:Arn"),
+      SpineCAChainARN: Fn.importValue("secrets-cdk:Secrets:SpineCAChain:Arn"),
       VERSION_NUMBER: props.version,
       COMMIT_ID: props.commitId,
       AWS_LAMBDA_EXEC_WRAPPER: "/opt/get-secrets-layer"
