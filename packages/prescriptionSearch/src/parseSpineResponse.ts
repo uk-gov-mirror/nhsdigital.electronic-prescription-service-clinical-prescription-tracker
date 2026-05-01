@@ -80,7 +80,7 @@ const parsePrescriptions = (responsePrescriptions: Array<ResponsePrescription>):
   let parsedPrescriptions: Array<Prescription> = []
   for (const responsePrescription of responsePrescriptions){
     const prescriptionId = responsePrescription.prescriptionID
-    const validationErrors = validatePrescriptionId(prescriptionId, logger)
+    const validationErrors = validatePrescriptionId(prescriptionId)
     if (validationErrors.length) {
       logger.warn(
         "Returned prescription ID is invalid, possible R1 prescription, removing from results", {prescriptionId})
