@@ -34,7 +34,7 @@
     "eslint-plugin-import-newlines": "^2.0.0",
     "globals": "^17.5.0",
     "jest": "^30.3.0",
-    "jest-junit": "^16.0.0",
+    "jest-junit": "^17.0.0",
     "ts-jest": "^29.4.9",
     "typescript": "^6.0.3"
   },
