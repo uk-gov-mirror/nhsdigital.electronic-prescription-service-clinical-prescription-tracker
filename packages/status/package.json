@@ -18,7 +18,7 @@
     "@aws-lambda-powertools/parameters": "^2.33.0",
     "@middy/core": "^7.3.2",
     "@middy/input-output-logger": "^7.1.0",
-    "@nhs/fhir-middy-error-handler": "^2.1.81",
+    "@nhs/fhir-middy-error-handler": "^2.1.82",
     "@nhsdigital/eps-spine-client": "^2.1.90"
   },
   "devDependencies": {
