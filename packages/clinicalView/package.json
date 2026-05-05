@@ -14,11 +14,11 @@
         "test": "npm run compile && npm run unit"
     },
     "dependencies": {
-        "@aws-lambda-powertools/logger": "^2.32.0",
+        "@aws-lambda-powertools/logger": "^2.33.0",
         "@cpt-common/common-types": "^1.0.0",
         "@cpt-common/common-utils": "^1.0.0",
         "@middy/http-header-normalizer": "^7.2.3",
-        "@nhsdigital/eps-spine-client": "^2.1.90",
+        "@nhsdigital/eps-spine-client": "^2.1.92",
         "@nhs/fhir-middy-error-handler": "^2.1.82",
         "date-fns": "^4.1.0",
         "fast-xml-parser": "^5.7.0",
