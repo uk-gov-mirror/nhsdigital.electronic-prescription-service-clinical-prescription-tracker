@@ -102,7 +102,7 @@ export const newHandler = (params: HandlerParams) => {
     .use(httpHeaderNormalizer())
     .use(inputOutputLogger({
       logger: (request) => {
-        logger.info(request)
+        logger.info("request", {request})
       }
     }))
     .use(errorHandler({logger}))
